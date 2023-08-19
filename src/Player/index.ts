@@ -6,7 +6,7 @@ import dinaStand from '../../static/assets/images/Dina_stand.png';
 import dinaJump from '../../static/assets/images/Dino_jump.png';
 import { playSFX } from '../Audio';
 
-const PLAYER_VELOCITY_X_CAP = 7;
+const PLAYER_VELOCITY_X_CAP = 5;
 const PLAYER_VELOCITY_Y_CAP = 25;
 const JUMP_VELOCITY = 25;
 // actually it's the index 0 - 2 meaning there are 3 images
@@ -105,36 +105,47 @@ export function movePlayer() {
   player.jumps = player.velocity.y !== 0;
 
   if (keyboard.pressed.KeyD) {
-    if (player.x + player.width < canvas.width) {
+    if (
+      player.x + player.width < canvas.width &&
+      !isPlayerColliding({ ...player, x: player.x + PLAYER_VELOCITY_X_CAP })
+    ) {
       player.moving = true;
-      player.x += player.velocity.x;
+      player.x += PLAYER_VELOCITY_X_CAP;
     }
   }
 
   if (keyboard.pressed.KeyA) {
-    if (player.x > 0) {
+    if (
+      player.x > 0 &&
+      !isPlayerColliding({ ...player, x: player.x - PLAYER_VELOCITY_X_CAP })
+    ) {
       player.moving = true;
-      player.x -= player.velocity.x;
-    }
-  }
-
-  if (keyboard.pressed.KeyA) {
-    if (player.x > 0) {
-      player.x -= player.velocity.x;
+      player.x -= PLAYER_VELOCITY_X_CAP;
     }
   }
 
   if (keyboard.pressed.KeyW) {
     if (
       player.velocity.y === 0 &&
-      Date.now() - keyboard.lastPressed.KeyW > 200 // 200 ms
+      Date.now() - keyboard.lastPressed.KeyW > 100 // 200 ms
     ) {
       player.velocity.y = -JUMP_VELOCITY;
       // it's a hack
       // we need to update it again here to make if (isPlayerColliding(player)) work properly
       // in the updatePlayerGravityForce function
-      player.y += player.velocity.y;
-      playSFX('jump');
+
+      if (!isPlayerColliding({ ...player, y: player.y + player.velocity.y })) {
+        player.y += player.velocity.y;
+      } else {
+        // find the closest spot, the player can reach
+        let nextY = player.y + player.velocity.y;
+
+        while (isPlayerColliding({ ...player, y: nextY })) {
+          nextY += 1;
+        }
+
+        player.y = nextY;
+      }
     }
     keyboard.lastPressed.KeyW = Date.now();
   }
@@ -149,7 +160,8 @@ export function updatePlayerGravityForce() {
     player.velocity.y = PLAYER_VELOCITY_Y_CAP;
   }
 
-  if (isPlayerColliding(player)) {
+  // predict the next position of the player to land on a non-collision position
+  if (isPlayerColliding({ ...player, y: player.y + player.velocity.y })) {
     player.velocity.y = 0;
   }
 }

@@ -3,6 +3,12 @@ import mapImage from "../../static/assets/tiled/level-1-section-1.png";
 
 export const TILE_WIDTH = 40
 export const TILE_HEIGHT = 60
+export const MAP_SIZE_IN_TILES_X = 32
+export const MAP_SIZE_IN_TILES_Y = 12
+
+// Canvas size:
+// width = 40 * 32 = 1280
+// height = 60 * 12 = 720
 
 interface Map {
   image: HTMLImageElement | null

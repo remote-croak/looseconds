@@ -1,7 +1,5 @@
 import { getContext, getCanvas } from '../Canvas';
-import { TILE_HEIGHT, TILE_WIDTH } from '../Map';
-
-
+import {TILE_WIDTH, TILE_HEIGHT, MAP_SIZE_IN_TILES_X, MAP_SIZE_IN_TILES_Y} from '../Map';
 import { Box } from '../Box';
 
 
@@ -17,8 +15,8 @@ interface Collectible{
 }
 
     const collect: Collectible = {
-        x: 0,
-        y: 0,
+        x: randomLocation("x") ,
+        y: randomLocation("y") ,
         width: TILE_WIDTH,
         height: TILE_HEIGHT,
         name: "collect1",
@@ -26,10 +24,27 @@ interface Collectible{
 
     }
 
+    function randomLocation(vector:string): number{
+        let maxY:number = TILE_HEIGHT * MAP_SIZE_IN_TILES_Y;
+        let maxX:number = TILE_WIDTH * MAP_SIZE_IN_TILES_X;
+        let loc:number = 0;
+        if(vector == "x"){
+            
+            loc = Math.random() * (maxX - 0) + 0;
+        }
+        else if(vector == "y"){
+            loc = Math.random() * (maxY - 0) + 0;
+
+        }
+
+        return loc;
+    }
+
     export function drawCollectible(){
         
         const ctx = getContext();
 
-        
+        ctx.fillStyle = '#ffff00';
+        ctx.fillRect(collect.x, collect.y, collect.width, collect.height);
         
     }

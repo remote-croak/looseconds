@@ -13,8 +13,8 @@ const JUMP_VELOCITY = 25;
 const PLAYER_IMAGE_NUM_FRAMES = 2;
 
 export const player: Player = {
-  x: 50,
-  y: 200,
+  x: 200,
+  y: 500,
   width: 64,
   height: 64,
   velocity: {

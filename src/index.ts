@@ -22,7 +22,7 @@ function animate() {
     movePlayer();
     drawPlayer();
     drawUI();
-    renderCollisions(true);
+    renderCollisions(false);
     if (Timer.getTimer() < 1) {
       isGameOver = true;
     }

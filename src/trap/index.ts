@@ -1,5 +1,6 @@
 // import { Water } from "./assets/water.png";
 import { Timer } from "../timer";
+import { rectangularCollision } from "../Collision";
 
 export class Trap {
 

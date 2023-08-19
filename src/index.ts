@@ -2,6 +2,7 @@ import { resetCanvas } from './Canvas';
 import { drawMap, initMap, map } from './Map';
 import { detectKeyboardActions } from './Keyboard';
 import { drawPlayer, movePlayer, updatePlayerGravityForce } from './Player';
+import { renderCollisions } from './Collision';
 
 function animate() {
   resetCanvas()
@@ -9,6 +10,7 @@ function animate() {
   updatePlayerGravityForce()
   movePlayer()
   drawPlayer()
+  renderCollisions(true)
   window.requestAnimationFrame(animate)
 }
 

@@ -3,6 +3,10 @@ export class Timer {
 
     static async init(){
         Timer.timeRem = 100;
+        while (Timer.timeRem > -1){
+            Timer.decreaseTime(1);
+            console.log(Timer.timeRem);
+        } 
     }
 
     static setTimer(t:number){
@@ -13,12 +17,12 @@ export class Timer {
         return Timer.timeRem;
     }
 
-    static decreaseTime(){
-        Timer.timeRem--;
+    static decreaseTime(decrease:number){
+        Timer.timeRem -= decrease;
     }
 
-    static increaseTime(){
-        Timer.timeRem++;
+    static increaseTime(increase:number){
+        Timer.timeRem += increase;
 
     }
 }

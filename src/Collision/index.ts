@@ -1,7 +1,7 @@
 import { Box } from '../Box';
 import { MAP_SIZE_IN_TILES_X, MAP_SIZE_IN_TILES_Y, TILE_HEIGHT, TILE_WIDTH } from '../Map';
 import tiledExportLevel1 from '../../static/assets/tiled/level-1-section-1.json'
-import { findLayer } from '../Tiled';
+import { findLayer, TiledExport } from '../Tiled';
 import { getContext } from '../Canvas';
 
 const COLLISION_TILE_ID = 1
@@ -29,6 +29,25 @@ export function parseTiledCollisionFile(tiledCollisionData: number[]) {
   return result;
 }
 
+export function createCollisionBoxes(tiledExport: TiledExport) {
+  const result = []
+  const collisions = parseTiledCollisionFile(findLayer('Ground', tiledExport)!)
+
+  for (let i = 0; i < collisions.length; i += 1) {
+    for (let j = 0; j < collisions[i].length; j += 1) {
+      if (collisions[i][j] === COLLISION_TILE_ID) {
+        result.push({
+          x: j * TILE_WIDTH,
+          y: i * TILE_HEIGHT,
+          width: TILE_WIDTH,
+          height: TILE_HEIGHT
+        })
+      }
+    }
+  }
+  return result
+}
+
 export function renderCollisions(shouldDraw: boolean) {
   const ctx = getContext()
   
@@ -36,14 +55,10 @@ export function renderCollisions(shouldDraw: boolean) {
     return
   }
   
-  const collisions = parseTiledCollisionFile(findLayer('Ground', tiledExportLevel1)!)
+  const collisionBoxes = createCollisionBoxes(tiledExportLevel1)
   
-  for (let i = 0; i < collisions.length; i += 1) {
-    for (let j = 0; j < collisions[i].length; j += 1) {
-      if (collisions[i][j] === COLLISION_TILE_ID) {
-        ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
-        ctx.fillRect(j * TILE_WIDTH, i * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT)
-      }
-    }
-  } 
+  for (let c of collisionBoxes) {
+    ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
+    ctx.fillRect(c.x, c.y, c.width, c.height)
+  }
 }

@@ -1,1 +1,1 @@
-console.log("Let's do this thing 😅")
+console.log("Let's do this thing! 😅")

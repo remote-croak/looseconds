@@ -9,23 +9,27 @@ interface Collectible{
     x:number;
     y:number;
 
-    width: TILE_WIDTH;
-    height: TILE_HEIGHT;
+    width:number;
+    height:number;
 
     name:string;
     grabbed:boolean ;
 }
 
     const collect: Collectible = {
-        
+        x: 0,
+        y: 0,
+        width: TILE_WIDTH,
+        height: TILE_HEIGHT,
+        name: "collect1",
+        grabbed:false
+
     }
 
     export function drawCollectible(){
         
         const ctx = getContext();
-    }
 
-    export function pickUp(){
         
-
+        
     }

@@ -21,11 +21,10 @@ export const map: Map = {
 export async function initMap() {
   const image = new Image();
 
-  image.src = mapImage;
-
   await new Promise((resolve, reject) => {
     image.onload = resolve;
     image.onerror = reject;
+    image.src = mapImage;
   });
 
   map.image = image;

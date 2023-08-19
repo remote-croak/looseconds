@@ -1,32 +1,30 @@
 export class Timer {
-    private static timeRem: number;
+  private static timeRem: number;
 
-    static async init(){
-        Timer.timeRem = 100;
+  static async init() {
+    Timer.timeRem = 100;
 
-        let timer = setInterval( function() { 
-            Timer.decreaseTime(1)
-            console.log(Timer.getTimer)
-            if(Timer.timeRem < 1) {
-                clearInterval(timer)
-                console.log("Time is up")
-            }
-        }, 1000)
-    }
+    let timer = setInterval(function () {
+      Timer.decreaseTime(1);
+      if (Timer.timeRem < 1) {
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
 
-    static setTimer(t:number){
-        Timer.timeRem = t;
-    }
+  static setTimer(t: number) {
+    Timer.timeRem = t;
+  }
 
-    static getTimer(){
-        return Timer.timeRem;
-    }
+  static getTimer() {
+    return Timer.timeRem;
+  }
 
-    static decreaseTime(decrease:number){
-        Timer.timeRem -= decrease;
-    }
+  static decreaseTime(decrease: number) {
+    Timer.timeRem -= decrease;
+  }
 
-    static increaseTime(increase:number){
-        Timer.timeRem += increase;
-    }
+  static increaseTime(increase: number) {
+    Timer.timeRem += increase;
+  }
 }

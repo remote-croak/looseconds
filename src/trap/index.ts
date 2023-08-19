@@ -4,9 +4,6 @@ import { Timer } from "../Timer";
 export class Trap {
 
     private trapActive:boolean = false;
-    private Water:boolean = false;
-    private x:number = 0;
-    private y:number = 0;
 
     private wait:number = 5;
 

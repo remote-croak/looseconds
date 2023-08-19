@@ -5,16 +5,26 @@ import { drawPlayer, movePlayer, updatePlayerGravityForce } from './Player';
 import { renderCollisions } from './Collision';
 import { drawUI } from './UI';
 import { Timer } from './Timer'
+import { showGameOver } from './Gameover'
+
+let isGameOver = false
 
 function animate() {
-  resetCanvas()
-  drawMap(map)
-  updatePlayerGravityForce()
-  movePlayer()
-  drawPlayer()
-  drawUI()
-  renderCollisions(true)
-  window.requestAnimationFrame(animate)
+  if(!isGameOver) {
+    resetCanvas()
+    drawMap(map)
+    updatePlayerGravityForce()
+    movePlayer()
+    drawPlayer()
+    drawUI()
+    renderCollisions(true)
+    if(Timer.getTimer() < 1) {
+        isGameOver = true
+    }
+    window.requestAnimationFrame(animate)
+  } else {
+    showGameOver(false)
+  }
 }
 
 async function main() {

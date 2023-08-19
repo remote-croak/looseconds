@@ -10,10 +10,10 @@ export function drawUI() {
     ctx.font = "32px WendyOne"
     ctx.fillStyle = "black"
 
-    Timer.init()
-    let timerText = "Time: " + Timer.getTimer().toString()
+    let timerValue = Timer.getTimer()
+    let timerText = "Time: " + timerValue
     ctx.fillText(timerText, w*0.05, h*0.15)
 
-    let collectibleText = "Items: 1"
+    let collectibleText = "Collectibles: 1"
     ctx.fillText(collectibleText, w*0.05, h*0.20)
 }

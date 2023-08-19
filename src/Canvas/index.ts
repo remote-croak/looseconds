@@ -1,10 +1,3 @@
-export function drawRect(x: number, y: number, color: string) {
-  const ctx = getContext()
-
-  ctx.fillStyle = color
-  ctx.fillRect(x, y, 50, 50)
-}
-
 export function resetCanvas() {
   const canvas = getCanvas()
   const ctx = getContext()

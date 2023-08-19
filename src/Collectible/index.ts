@@ -1,13 +1,31 @@
-export class Collectible{
-    private x:number = 0;
-    private y:number = 0;
-    private name:string = "";
-    private grabbed:boolean = false;
+import { getContext, getCanvas } from '../Canvas';
+import { TILE_HEIGHT, TILE_WIDTH } from '../Map';
 
-    public async init(x:number, y:number, name:string){
-        this.x = x;
-        this.y = y;
-        this.name = name;
+
+import { Box } from '../Box';
+
+
+interface Collectible{
+    x:number;
+    y:number;
+
+    width: TILE_WIDTH;
+    height: TILE_HEIGHT;
+
+    name:string;
+    grabbed:boolean ;
+}
+
+    const collect: Collectible = {
+        
+    }
+
+    export function drawCollectible(){
+        
+        const ctx = getContext();
+    }
+
+    export function pickUp(){
+        
 
     }
-}

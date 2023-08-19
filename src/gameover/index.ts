@@ -1,10 +1,12 @@
+import { getCanvas, getContext } from '../Canvas';
+
 export function showGameOver(playerWins: boolean): void {
-    const canvas = document.querySelector('canvas')!
-    const ctx = canvas?.getContext('2d')!
+    const canvas = getCanvas()
+    const ctx = getContext()
     const img = new Image()
 
     img.onload = () => {
-        ctx.drawImage(img, 0, 0);
+        ctx.drawImage(img, 0, 0)
     }
     if(playerWins) {
         img.src = './assets/images/gameover_win.png'

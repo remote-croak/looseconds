@@ -1,8 +1,8 @@
 import { getCanvas, getContext } from '../Canvas';
 import mapImage from "../../static/assets/tiled/level-1-section-1.png";
 
-export const TILE_WIDTH = 60
-export const TILE_HEIGHT = 50
+export const TILE_WIDTH = 40
+export const TILE_HEIGHT = 60
 
 interface Map {
   image: HTMLImageElement | null

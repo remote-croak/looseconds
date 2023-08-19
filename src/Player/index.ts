@@ -1,22 +1,13 @@
 import { getContext, getCanvas } from '../Canvas';
 import { keyboard } from '../Keyboard';
 import { TILE_HEIGHT, TILE_WIDTH } from '../Map';
-
-interface Player {
-  x: number
-  y: number
-  width: number
-  height: number
-  velocity: {
-    x: number
-    y: number
-  }
-}
+import { Player } from './interfaces';
+import { isPlayerColliding } from '../PlayerCollisionController';
 
 const PLAYER_VELOCITY_X_CAP = 10;
 const PLAYER_VELOCITY_Y_CAP = 25;
 
-const player: Player = {
+export const player: Player = {
   x: 0,
   y: 0,
   width: TILE_WIDTH,
@@ -61,9 +52,7 @@ export function updatePlayerGravityForce() {
     player.velocity.y = PLAYER_VELOCITY_Y_CAP
   }
   
-  if (
-    player.y + player.height >= canvas.height - TILE_HEIGHT
-  ) {
+  if (isPlayerColliding(player)) {
     player.velocity.y = 0
   }
 }

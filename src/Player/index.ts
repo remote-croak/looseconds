@@ -34,17 +34,16 @@ export async function initPlayerImages() {
   const image = new Image();
   const imageJump = new Image();
 
-  image.src = dinaStand;
-  imageJump.src = dinaJump;
-
   await new Promise((resolve, reject) => {
     image.onload = resolve;
     image.onerror = reject;
+    image.src = dinaStand;
   });
 
   await new Promise((resolve, reject) => {
     imageJump.onload = resolve;
     imageJump.onerror = reject;
+    imageJump.src = dinaJump;
   });
 
   player.image = image;
@@ -135,7 +134,7 @@ export function movePlayer() {
       // we need to update it again here to make if (isPlayerColliding(player)) work properly
       // in the updatePlayerGravityForce function
       player.y += player.velocity.y;
-      playSFX('jump')
+      playSFX('jump');
     }
     keyboard.lastPressed.KeyW = Date.now();
   }

@@ -8,12 +8,12 @@ export function drawUI() {
     const h = canvas.height
 
     ctx.font = "32px WendyOne"
-    ctx.fillStyle = "black"
+    ctx.fillStyle = "white"
 
     let timerValue = Timer.getTimer()
     let timerText = "Time: " + timerValue
     ctx.fillText(timerText, w*0.05, h*0.15)
 
-    let collectibleText = "Collectibles: 1"
+    let collectibleText = "Items: 1"
     ctx.fillText(collectibleText, w*0.05, h*0.20)
 }

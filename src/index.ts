@@ -10,7 +10,7 @@ import {
 import { renderCollisions } from './Collision';
 import { drawUI } from './UI';
 import { Timer } from './Timer';
-import { showGameOver } from './Gameover';
+import { showGameOver } from './gameover';
 
 let isGameOver = false;
 

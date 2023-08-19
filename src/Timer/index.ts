@@ -4,11 +4,11 @@ export class Timer {
     static async init(){
         Timer.timeRem = 100;
 
-        setInterval( function() { 
+        let timer = setInterval( function() { 
             Timer.decreaseTime(1)
             console.log(Timer.getTimer)
             if(Timer.timeRem < 1) {
-                clearInterval(this)
+                clearInterval(timer)
                 console.log("Time is up")
             }
         }, 1000)

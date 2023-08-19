@@ -3,10 +3,15 @@ export class Timer {
 
     static async init(){
         Timer.timeRem = 100;
-        while (Timer.timeRem > -1){
-            Timer.decreaseTime(1);
-            console.log(Timer.timeRem);
-        } 
+
+        let timer = setInterval( function() { 
+            Timer.decreaseTime(1)
+            console.log(Timer.getTimer)
+            if(Timer.timeRem < 1) {
+                clearInterval(timer)
+                console.log("Time is up")
+            }
+        }, 1000)
     }
 
     static setTimer(t:number){
@@ -23,6 +28,5 @@ export class Timer {
 
     static increaseTime(increase:number){
         Timer.timeRem += increase;
-
     }
 }

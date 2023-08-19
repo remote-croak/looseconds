@@ -102,7 +102,7 @@ export function movePlayer() {
 
   // for some reason player is in the air
   // update the jumps state
-  player.jumps = player.velocity.y > 0;
+  player.jumps = player.velocity.y !== 0;
 
   if (keyboard.pressed.KeyD) {
     if (player.x + player.width < canvas.width) {

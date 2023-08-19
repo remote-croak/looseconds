@@ -1,41 +1,47 @@
 import { resetCanvas } from './Canvas';
 import { drawMap, initMap, map } from './Map';
 import { detectKeyboardActions } from './Keyboard';
-import { drawPlayer, movePlayer, updatePlayerGravityForce } from './Player';
+import {
+  drawPlayer,
+  initPlayerImages,
+  movePlayer,
+  updatePlayerGravityForce,
+} from './Player';
 import { renderCollisions } from './Collision';
 import { drawUI } from './UI';
-import { Timer } from './Timer'
-import { showGameOver } from './Gameover'
+import { Timer } from './Timer';
+import { showGameOver } from './gameover';
 
-let isGameOver = false
+let isGameOver = false;
 
 function animate() {
-  if(!isGameOver) {
-    resetCanvas()
-    drawMap(map)
-    updatePlayerGravityForce()
-    movePlayer()
-    drawPlayer()
-    drawUI()
-    renderCollisions(true)
-    if(Timer.getTimer() < 1) {
-        isGameOver = true
+  if (!isGameOver) {
+    resetCanvas();
+    drawMap(map);
+    updatePlayerGravityForce();
+    movePlayer();
+    drawPlayer();
+    drawUI();
+    renderCollisions(true);
+    if (Timer.getTimer() < 1) {
+      isGameOver = true;
     }
-    window.requestAnimationFrame(animate)
+    window.requestAnimationFrame(animate);
   } else {
-    showGameOver(false)
+    showGameOver(false);
   }
 }
 
 async function main() {
-  detectKeyboardActions()
+  detectKeyboardActions();
   try {
-    await initMap()
+    await initMap();
+    await initPlayerImages();
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
-  Timer.init()
-  animate()
+  Timer.init();
+  animate();
 }
 
-main()
+main();

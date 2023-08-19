@@ -14,7 +14,7 @@ interface Player {
 }
 
 const PLAYER_VELOCITY_X_CAP = 10;
-const PLAYER_VELOCITY_Y_CAP = 10;
+const PLAYER_VELOCITY_Y_CAP = 25;
 
 const player: Player = {
   x: 0,
@@ -57,9 +57,12 @@ export function updatePlayerGravityForce() {
   // increase y velocity by one with EACH rendered frame
   player.velocity.y += 1
   
+  if (player.velocity.y >= PLAYER_VELOCITY_Y_CAP) {
+    player.velocity.y = PLAYER_VELOCITY_Y_CAP
+  }
+  
   if (
-    player.y + player.height >= canvas.height - TILE_HEIGHT ||
-    player.velocity.y >= PLAYER_VELOCITY_Y_CAP
+    player.y + player.height >= canvas.height - TILE_HEIGHT
   ) {
     player.velocity.y = 0
   }

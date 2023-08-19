@@ -1,4 +1,10 @@
 import { Box } from '../Box';
+import { MAP_SIZE_IN_TILES_X, MAP_SIZE_IN_TILES_Y, TILE_HEIGHT, TILE_WIDTH } from '../Map';
+import tiledExportLevel1 from '../../static/assets/tiled/level-1-section-1.json'
+import { findLayer } from '../Tiled';
+import { getContext } from '../Canvas';
+
+const COLLISION_TILE_ID = 1
 
 export function rectangularCollision(
   box1: Box,
@@ -10,4 +16,34 @@ export function rectangularCollision(
     box1.y <= box2.y + box2.height &&
     box1.y + box1.height >= box2.y
   );
+}
+
+export function parseTiledCollisionFile(tiledCollisionData: number[]) {
+  const result = []
+  for (let i = 0; i < tiledCollisionData.length; i += MAP_SIZE_IN_TILES_X) {
+    result.push(tiledCollisionData.slice(i, i + MAP_SIZE_IN_TILES_X))
+  }
+  if (result.length !== MAP_SIZE_IN_TILES_Y) {
+    throw new Error('Oops, your collision data does not fit the size map. Please review the Tiled export.')
+  }
+  return result;
+}
+
+export function renderCollisions(shouldDraw: boolean) {
+  const ctx = getContext()
+  
+  if (!shouldDraw) {
+    return
+  }
+  
+  const collisions = parseTiledCollisionFile(findLayer('Ground', tiledExportLevel1)!)
+  
+  for (let i = 0; i < collisions.length; i += 1) {
+    for (let j = 0; j < collisions[i].length; j += 1) {
+      if (collisions[i][j] === COLLISION_TILE_ID) {
+        ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
+        ctx.fillRect(j * TILE_WIDTH, i * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT)
+      }
+    }
+  } 
 }

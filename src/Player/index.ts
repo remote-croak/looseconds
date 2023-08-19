@@ -3,6 +3,7 @@ import { keyboard } from '../Keyboard';
 import { TILE_HEIGHT, TILE_WIDTH } from '../Map';
 import { Player } from './interfaces';
 import { isPlayerColliding } from '../PlayerCollisionController';
+import { playSFX } from '../Audio';
 
 const PLAYER_VELOCITY_X_CAP = 10;
 const PLAYER_VELOCITY_Y_CAP = 25;
@@ -59,6 +60,7 @@ export function movePlayer() {
       // we need to update it again here to make if (isPlayerColliding(player)) work properly
       // in the updatePlayerGravityForce function
       player.y += player.velocity.y;
+      playSFX('jump')
     }
     keyboard.lastPressed.KeyW = Date.now();
   }

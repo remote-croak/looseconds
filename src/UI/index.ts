@@ -27,7 +27,13 @@ export function changeLevelSectionAnimation() {
 export function loseTimeAnimation() {
   uiFont = '42px WendyOne';
   uiFill = 'red';
-  setTimeout(resetTextStyle, 1000);
+  setTimeout(resetTextStyle, 500);
+}
+
+export function gainTimeAnimation() {
+  uiFont = '42px WendyOne';
+  uiFill = 'green';
+  setTimeout(resetTextStyle, 500);
 }
 
 function resetTextStyle() {

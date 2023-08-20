@@ -4,6 +4,8 @@ import { collectible, createCollectibleBoxes } from '../Collectible';
 import { TiledExport } from '../Tiled';
 import { player } from '../Player';
 import { Timer } from '../Timer';
+import { gainTimeAnimation } from '../UI'
+import { playSFX } from '../Audio'
 
 export function isPlayerCollidingCollectible(
   player: Player,
@@ -34,5 +36,7 @@ export function pickCollectible(tiledExport: TiledExport) {
     collectible.collected[String(index)] = true;
     collectible.collectedAmount += 1;
     Timer.increaseTime(3);
+    gainTimeAnimation();
+    playSFX('collect');
   }
 }

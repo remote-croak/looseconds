@@ -1,4 +1,4 @@
-const FPS_CAP = 60;
+const FPS_CAP = 100;
 
 export const frameLimiter = {
   then: Date.now(),

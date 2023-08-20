@@ -1,20 +1,15 @@
-import { getContext, getCanvas } from '../Canvas';
-import { Player } from '../Player/interfaces';
-import {TILE_WIDTH, TILE_HEIGHT, MAP_SIZE_IN_TILES_X, MAP_SIZE_IN_TILES_Y} from '../Map';
-import level from '../../static/assets/tiled/level-1-section-1.json'
+export class Collectible {
+    private static collected: number;
 
-import { rectangularCollision, createCollisionBoxes } from '../Collision';
-
-export class Collectible{
-
-    private collected:number = 0;
-
-
-    public getNumCollected(): number{
-        return this.collected;
+    static async init() {
+        Collectible.collected = 0;
     }
 
-    public addCollectible(){
-        this.collected++;
+    static getNumCollected(): number{
+        return Collectible.collected;
+    }
+
+    static addCollectible(){
+        Collectible.collected++;
     }
 }

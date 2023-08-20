@@ -14,6 +14,7 @@ import {
 import { renderCollisions } from './Collision';
 import { drawUI } from './UI';
 import { Timer } from './Timer';
+import { Collectible } from './Collectible';
 import { showGameOver } from './gameover';
 import { moveMap } from './MoveController';
 import { getSelectedMap, changeMap, mapController } from './MapController';
@@ -70,6 +71,7 @@ async function main() {
   window.addEventListener('keydown', (event) => {
     if (event.code == 'Digit1') {
       Timer.init();
+      Collectible.init();
       playBgMusic('dinosaurEra');
       animate(-1);
     } else if (event.code == 'Digit2') {

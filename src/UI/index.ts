@@ -21,6 +21,8 @@ export function drawUI() {
 }
 
 export function changeLevelSectionAnimation() {
+  let timerValue = Timer.getTimer();
+  if(timerValue < 30) Timer.setTimer(30);
   document.querySelector('#flash')!.classList.add('flash');
 }
 

@@ -1,6 +1,6 @@
 import { resetCanvas } from './Canvas';
-import { drawMap, initMap, map } from './Map';
-import { keyboard, detectKeyboardActions } from './Keyboard';
+import { drawMap, initMap } from './Map';
+import { detectKeyboardActions } from './Keyboard';
 import {
   drawPlayer,
   initPlayerImages,
@@ -8,6 +8,7 @@ import {
   player,
   PLAYER_INITIAL_X,
   PLAYER_INITIAL_Y,
+  playerWins,
   updatePlayerGravityForce,
 } from './Player';
 import { renderCollisions } from './Collision';
@@ -46,11 +47,14 @@ function animate(mapIndex: number) {
     drawUI();
     renderCollisions(false, map.tiledExport);
     changeMap();
+    if (playerWins()) {
+      isGameOver = true;
+    }
     if (Timer.getTimer() < 1) {
       isGameOver = true;
     }
   } else {
-    showGameOver(false);
+    showGameOver(playerWins());
   }
 }
 
@@ -75,14 +79,6 @@ async function main() {
     
     }
   });
-  // if(keyboard.pressed.Digit1){
-  //   console.log('pressed 1');
-  //   Timer.init();
-  //   animate(-1);
-  // }
-  // else if(keyboard.pressed.Digit2){
-  //   window.open('https://github.com/Acousticdesk/looseconds');
-  // }
 }
 
 main();

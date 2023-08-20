@@ -6,6 +6,12 @@ import dinaStand from '../../static/assets/images/Dina_stand.png';
 import dinaJump from '../../static/assets/images/Dino_jump.png';
 import { playSFX } from '../Audio';
 import { TiledExport } from '../Tiled';
+import {
+  getSelectedMap,
+  hasNextMap,
+  mapController,
+  selectMap,
+} from '../MapController';
 
 export const PLAYER_VELOCITY_X_CAP = 5;
 export const PLAYER_VELOCITY_Y_CAP = 25;
@@ -178,4 +184,11 @@ export function updatePlayerGravityForce(tiledExport: TiledExport) {
   ) {
     player.velocity.y = 0;
   }
+}
+
+export function playerWins() {
+  if (getSelectedMap().offset.x >= 2000) {
+    return !hasNextMap();
+  }
+  return false;
 }

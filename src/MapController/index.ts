@@ -1,13 +1,17 @@
-import { map, mapSection2 } from '../Map';
+import { map, mapSection2, mapSection3, mapSection4 } from '../Map';
 import { changeLevelSectionAnimation } from '../UI';
 
 export const mapController = {
   selectedMap: 0,
-  maps: [map, mapSection2],
+  maps: [map, mapSection3, mapSection4, mapSection2],
 };
 
 export function getSelectedMap() {
   return mapController.maps[mapController.selectedMap];
+}
+
+export function hasNextMap() {
+  return !!mapController.maps[mapController.selectedMap + 1];
 }
 
 export function selectMap(index: number) {
@@ -20,11 +24,11 @@ export function selectMap(index: number) {
 }
 
 export function changeMap() {
-  if (map.offset.x === 2000) {
-    selectMap(mapController.selectedMap + 1);
+  if (getSelectedMap().offset.x === 2000) {
+    return selectMap(mapController.selectedMap + 1);
   }
 
-  if (map.offset.x === -1) {
-    selectMap(mapController.selectedMap - 1);
+  if (getSelectedMap().offset.x === -1) {
+    return selectMap(mapController.selectedMap - 1);
   }
 }

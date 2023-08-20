@@ -1,22 +1,19 @@
 import { getCanvas, getContext } from '../Canvas';
-import { keyboard } from '../Keyboard';
 
 export function showGameOver(playerWins: boolean): void {
-    const canvas = getCanvas()
-    const ctx = getContext()
-    const img = new Image()
+  const canvas = getCanvas();
+  const ctx = getContext();
+  const img = new Image();
 
-    img.onload = () => {
-        ctx.drawImage(img, 0, 0)
-    }
-    if(playerWins) {
-        img.src = './assets/images/gameover_win.png'
-        console.log('You win')
-    } else {
-        img.src = './assets/images/gameover_lose.png'
-        console.log('You lose')
-        window.addEventListener('keydown', (e) => {
-            window.location.reload();
-        });
-    }
+  img.onload = () => {
+    ctx.drawImage(img, 0, 0);
+  };
+  if (playerWins) {
+    img.src = './assets/images/gameover_win.png';
+  } else {
+    img.src = './assets/images/gameover_lose.png';
+    window.addEventListener('keydown', (e) => {
+      window.location.reload();
+    });
+  }
 }

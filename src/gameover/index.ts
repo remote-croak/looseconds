@@ -1,4 +1,5 @@
 import { getCanvas, getContext } from '../Canvas';
+import { keyboard } from '../Keyboard';
 
 export function showGameOver(playerWins: boolean): void {
     const canvas = getCanvas()
@@ -14,5 +15,8 @@ export function showGameOver(playerWins: boolean): void {
     } else {
         img.src = './assets/images/gameover_lose.png'
         console.log('You lose')
+        window.addEventListener('keydown', (e) => {
+            window.location.reload();
+        });
     }
 }

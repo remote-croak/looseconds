@@ -1,10 +1,12 @@
 import { getContext } from '../Canvas';
 import { Map } from './interfaces';
 import mapImage from '../../static/assets/tiled/level-1.png';
+import map2Image from '../../static/assets/tiled/level-2.png';
 // import mapImageSection2 from '../../static/assets/tiled/level-1-section-2.png';
 // import mapImageSection3 from '../../static/assets/tiled/level-1-section-3.png';
 // import mapImageSection4 from '../../static/assets/tiled/level-1-section-4.png';
 import mapTiledExport from '../../static/assets/tiled/level-1.json';
+import map2TiledExport from '../../static/assets/tiled/level-2.json';
 // import mapSection2TiledExport from '../../static/assets/tiled/level-1-section-2.json';
 // import mapSection3TiledExport from '../../static/assets/tiled/level-1-section-3.json';
 // import mapSection4TiledExport from '../../static/assets/tiled/level-1-section-4.json';
@@ -22,6 +24,17 @@ export const map: Map = {
   image: null,
   src: mapImage,
   tiledExport: mapTiledExport,
+  offset: {
+    x: 0,
+    y: 0,
+  },
+  finishLineOffset: 200,
+};
+
+export const map2: Map = {
+  image: null,
+  src: map2Image,
+  tiledExport: map2TiledExport,
   offset: {
     x: 0,
     y: 0,

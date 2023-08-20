@@ -15,7 +15,7 @@ import {
 
 export const PLAYER_VELOCITY_X_CAP = 5;
 export const PLAYER_VELOCITY_Y_CAP = 25;
-export const PLAYER_INITIAL_X = 200;
+export const PLAYER_INITIAL_X = 225;
 export const PLAYER_INITIAL_Y = 500;
 const JUMP_VELOCITY = 25;
 // actually it's the index 0 - 2 meaning there are 3 images

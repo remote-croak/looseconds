@@ -11,12 +11,14 @@ import { renderCollisions } from './Collision';
 import { drawUI } from './UI';
 import { Timer } from './Timer';
 import { showGameOver } from './gameover';
+import { moveMap } from './MoveController';
 
 let isGameOver = false;
 
 function animate() {
   if (!isGameOver) {
     resetCanvas();
+    moveMap();
     drawMap(map);
     updatePlayerGravityForce();
     movePlayer();

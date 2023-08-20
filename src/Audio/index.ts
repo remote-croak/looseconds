@@ -8,6 +8,14 @@ export function playSFX(clip: string): void {
         case 'collect': { 
             audioSFX.src = './assets/audio/sfx/sfx_collect.mp3'
             break; 
+        }
+        case 'win': { 
+            audioSFX.src = './assets/audio/sfx/sfx_game_over_win.mp3'
+            break; 
+        }
+        case 'lose': { 
+            audioSFX.src = './assets/audio/sfx/sfx_game_over_lost.mp3'
+            break; 
         } 
         default: { 
             audioSFX.src = ''

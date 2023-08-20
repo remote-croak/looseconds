@@ -22,22 +22,22 @@ import { drawTitle } from './Title';
 let isGameOver = false;
 
 function animate(mapIndex: number) {
-  if (mapIndex === mapController.selectedMap) {
-    window.requestAnimationFrame(animate.bind(null, mapIndex));
-  } else {
-    initMap(getSelectedMap()).then(() => {
-      player.x = PLAYER_INITIAL_X;
-      player.y = PLAYER_INITIAL_Y;
-      window.requestAnimationFrame(
-        animate.bind(null, mapController.selectedMap)
-      );
-    });
-    return;
-  }
-
-  const map = getSelectedMap();
-
   if (!isGameOver) {
+    if (mapIndex === mapController.selectedMap) {
+      window.requestAnimationFrame(animate.bind(null, mapIndex));
+    } else {
+      initMap(getSelectedMap()).then(() => {
+        player.x = PLAYER_INITIAL_X;
+        player.y = PLAYER_INITIAL_Y;
+        window.requestAnimationFrame(
+          animate.bind(null, mapController.selectedMap)
+        );
+      });
+      return;
+    }
+
+    const map = getSelectedMap();
+
     resetCanvas();
     moveMap();
     drawMap(map);

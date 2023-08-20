@@ -15,7 +15,7 @@ import collectibleLevel2Image from '../../static/assets/images/collectible-level
 
 export const TILE_WIDTH = 40;
 export const TILE_HEIGHT = 40;
-export const MAP_SIZE_IN_TILES_X = 256;
+export const MAP_SIZE_IN_TILES_X = 288;
 export const MAP_SIZE_IN_TILES_Y = 18;
 
 // Canvas size:
@@ -30,7 +30,7 @@ export const map: Map = {
     x: 0,
     y: 0,
   },
-  finishLineOffset: 200,
+  finishLineOffset: 1280,
   collectibleImage: collectibleLevel1Image,
 };
 
@@ -42,7 +42,7 @@ export const map2: Map = {
     x: 0,
     y: 0,
   },
-  finishLineOffset: 200,
+  finishLineOffset: 1280,
   collectibleImage: collectibleLevel2Image,
 };
 

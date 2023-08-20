@@ -93,17 +93,19 @@ async function main() {
     console.error(e);
   }
   drawTitle();
-  window.addEventListener('keydown', (event) => {
-    if (event.code == 'Digit1') {
-      Timer.init();
-      Collectible.init();
-      playBgMusic('dinosaurEra');
-      animate(-1);
-    } else if (event.code == 'Digit2') {
-      window.open('https://github.com/Acousticdesk/looseconds');
-    } else {
-    }
-  });
+  window.addEventListener('keydown', handleKeyDown);
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+  if (event.code == 'Digit1') {
+    window.removeEventListener('keydown', handleKeyDown);
+    Timer.init();
+    Collectible.init();
+    playBgMusic('dinosaurEra');
+    animate(-1);
+  } else if (event.code == 'Digit2') {
+    window.open('https://github.com/Acousticdesk/looseconds');
+  }
 }
 
 main();

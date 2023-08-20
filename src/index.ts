@@ -67,16 +67,13 @@ async function main() {
   }
   drawTitle();
   window.addEventListener('keydown', (event) => {
-    if (event.code == 'Digit1'){
+    if (event.code == 'Digit1') {
       console.log('pressed 1');
       Timer.init();
       animate(-1);
-    }
-    else if(event.code == 'Digit2'){
+    } else if (event.code == 'Digit2') {
       window.open('https://github.com/Acousticdesk/looseconds');
-    }
-    else{
-    
+    } else {
     }
   });
 }

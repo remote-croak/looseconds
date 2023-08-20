@@ -116,7 +116,7 @@ export function movePlayer(tiledExport: TiledExport) {
   if (keyboard.pressed.KeyD) {
     if (
       player.x + player.width < canvas.width &&
-      !isPlayerColliding({ ...player, x: player.x + 1 }, tiledExport)
+      !isPlayerColliding({ ...player, x: player.x + 5 }, tiledExport)
     ) {
       player.moving = true;
       // player.x += PLAYER_VELOCITY_X_CAP;
@@ -126,7 +126,7 @@ export function movePlayer(tiledExport: TiledExport) {
   if (keyboard.pressed.KeyA) {
     if (
       player.x > 0 &&
-      !isPlayerColliding({ ...player, x: player.x - 1 }, tiledExport)
+      !isPlayerColliding({ ...player, x: player.x - 5 }, tiledExport)
     ) {
       player.moving = true;
       // player.x -= PLAYER_VELOCITY_X_CAP;

@@ -2,7 +2,6 @@ import { rectangularCollision } from '../Collision';
 import { Player } from '../Player/interfaces';
 import { createCollisionBoxes } from '../Collision';
 import { TiledExport } from '../Tiled';
-import { createTrapBoxes } from '../Trap';
 
 export function isPlayerColliding(player: Player, tiledExport: TiledExport) {
   const collisionBoxes = createCollisionBoxes(tiledExport);

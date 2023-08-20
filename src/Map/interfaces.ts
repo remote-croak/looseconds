@@ -9,4 +9,5 @@ export interface Map {
     y: number;
   };
   finishLineOffset: number;
+  collectibleImage: string;
 }

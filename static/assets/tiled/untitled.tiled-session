@@ -50,31 +50,31 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 1004.7739817991944,
-                "y": 355.0648963150828
+                "y": 356.55676562733106
             }
         },
         "level-1-section-4.tmx": {
             "scale": 0.6681,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1088.9088459811405,
-                "y": 365.21478820535856
+                "x": 978.1469839844335,
+                "y": 378.68582547522817
             }
         },
         "level-1.tmx": {
             "scale": 0.3038,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 9695.523370638577,
-                "y": 464.1211323238972
+                "x": 10113.561553653719,
+                "y": 322.58064516129025
             }
         },
         "level-2.tmx": {
             "scale": 0.2918,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 303.2899246058945,
-                "y": 315.28444139821795
+                "x": 9316.31254283756,
+                "y": 270.73337902673063
             }
         }
     },
@@ -94,6 +94,7 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "level-1.tmx",
         "level-2.tmx",
         "level-1-section-1.tmx",
         "level-1-section-2.tmx",

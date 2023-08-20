@@ -2,14 +2,17 @@ import { getCanvas, getContext } from '../Canvas';
 import { Timer } from '../Timer';
 import { collectible } from '../Collectible';
 
+let uiFont = '42px WendyOne';
+let uiFill = 'white';
+
 export function drawUI() {
   const canvas = getCanvas();
   const ctx = getContext();
   const w = canvas.width;
   const h = canvas.height;
 
-  ctx.font = '42px WendyOne';
-  ctx.fillStyle = 'white';
+  ctx.font = uiFont;
+  ctx.fillStyle = uiFill;
 
   let timerValue = Timer.getTimer();
   if(timerValue < 1) timerValue = 0;
@@ -19,4 +22,15 @@ export function drawUI() {
 
 export function changeLevelSectionAnimation() {
   document.querySelector('#flash')!.classList.add('flash');
+}
+
+export function loseTimeAnimation() {
+  uiFont = '42px WendyOne';
+  uiFill = 'red';
+  setTimeout(resetTextStyle, 1000);
+}
+
+function resetTextStyle() {
+  uiFont = '42px WendyOne';
+  uiFill = 'white';
 }

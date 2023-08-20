@@ -117,7 +117,6 @@ export function movePlayer(tiledExport: TiledExport) {
 
   player.y += player.velocity.y;
   player.moving = false;
-  console.log(keyboard.pressed.KeyA);
 
   // for some reason player is in the air
   // update the jumps state

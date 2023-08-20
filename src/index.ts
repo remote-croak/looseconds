@@ -15,7 +15,12 @@ import { renderCollisions } from './Collision';
 import { renderTraps } from './Trap';
 import { drawUI } from './UI';
 import { Timer } from './Timer';
-import { Collectible } from './Collectible';
+import {
+  collectible,
+  initCollectibleImages,
+  renderCollectibles,
+  resetCollectibles,
+} from './Collectible';
 import { showGameOver } from './gameover';
 import { moveMap } from './MoveController';
 import { getSelectedMap, changeMap, mapController } from './MapController';
@@ -23,6 +28,7 @@ import { drawTitle } from './Title';
 import { playBgMusic } from './Audio';
 import { trapPlayer } from './PlayerTrapsController';
 import { frameLimiter } from './FrameLimiter';
+import { pickCollectible } from './PlayerCollectibleController';
 
 let isGameOver = false;
 
@@ -51,9 +57,11 @@ function animate(mapIndex: number) {
     if (mapIndex === mapController.selectedMap) {
       window.requestAnimationFrame(animate.bind(null, mapIndex));
     } else {
-      initMap(getSelectedMap()).then(() => {
+      resetCollectibles();
+      initMap(getSelectedMap()).then(async () => {
         player.x = PLAYER_INITIAL_X;
         player.y = PLAYER_INITIAL_Y;
+        await initCollectibleImages(getSelectedMap().collectibleImage);
         window.requestAnimationFrame(
           animate.bind(null, mapController.selectedMap)
         );
@@ -73,6 +81,8 @@ function animate(mapIndex: number) {
     drawUI();
     renderCollisions(false, map.tiledExport);
     renderTraps(false, map.tiledExport);
+    renderCollectibles(map.tiledExport);
+    pickCollectible(map.tiledExport);
     changeMap();
     if (playerWins()) {
       isGameOver = true;
@@ -100,7 +110,6 @@ function handleKeyDown(event: KeyboardEvent) {
   if (event.code == 'Digit1') {
     window.removeEventListener('keydown', handleKeyDown);
     Timer.init();
-    Collectible.init();
     playBgMusic('dinosaurEra');
     animate(-1);
   } else if (event.code == 'Digit2') {

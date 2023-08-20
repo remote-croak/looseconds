@@ -10,6 +10,8 @@ import map2TiledExport from '../../static/assets/tiled/level-2.json';
 // import mapSection2TiledExport from '../../static/assets/tiled/level-1-section-2.json';
 // import mapSection3TiledExport from '../../static/assets/tiled/level-1-section-3.json';
 // import mapSection4TiledExport from '../../static/assets/tiled/level-1-section-4.json';
+import collectibleLevel1Image from '../../static/assets/images/collectible-level-1.png';
+import collectibleLevel2Image from '../../static/assets/images/collectible-level-2.png';
 
 export const TILE_WIDTH = 40;
 export const TILE_HEIGHT = 40;
@@ -29,6 +31,7 @@ export const map: Map = {
     y: 0,
   },
   finishLineOffset: 200,
+  collectibleImage: collectibleLevel1Image,
 };
 
 export const map2: Map = {
@@ -40,6 +43,7 @@ export const map2: Map = {
     y: 0,
   },
   finishLineOffset: 200,
+  collectibleImage: collectibleLevel2Image,
 };
 
 // export const mapSection2: Map = {

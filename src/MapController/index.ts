@@ -1,10 +1,10 @@
-import { map } from '../Map';
+import { map, map2 } from '../Map';
 import { changeLevelSectionAnimation } from '../UI';
 
 export const mapController = {
   selectedMap: 0,
   // maps: [map, mapSection3, mapSection4, mapSection2],
-  maps: [map],
+  maps: [map, map2],
 };
 
 export function getSelectedMap() {
@@ -26,13 +26,13 @@ export function selectMap(index: number) {
 
 export function changeMap() {
   if (
-    getSelectedMap().offset.x ===
+    getSelectedMap().offset.x >=
     getSelectedMap().image!.width - getSelectedMap().finishLineOffset
   ) {
     return selectMap(mapController.selectedMap + 1);
   }
 
-  if (getSelectedMap().offset.x === -1) {
+  if (getSelectedMap().offset.x <= -1) {
     return selectMap(mapController.selectedMap - 1);
   }
 }

@@ -2,7 +2,7 @@ export class Timer {
   private static timeRem: number;
 
   static async init() {
-    Timer.timeRem = 60;
+    Timer.timeRem = 135;
 
     let timer = setInterval(function () {
       Timer.decreaseTime(1);

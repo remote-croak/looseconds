@@ -50,7 +50,7 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 1004.7739817991944,
-                "y": 353.5730270028346
+                "y": 355.0648963150828
             }
         },
         "level-1-section-4.tmx": {
@@ -58,15 +58,23 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 1088.9088459811405,
-                "y": 363.7180062864841
+                "y": 365.21478820535856
             }
         },
         "level-1.tmx": {
             "scale": 0.3038,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 765.3061224489796,
-                "y": 365.37195523370633
+                "x": 5120.144832126399,
+                "y": 342.3304805793284
+            }
+        },
+        "level-2.tmx": {
+            "scale": 0.06796875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 5127.356321839081,
+                "y": 367.81609195402234
             }
         }
     },
@@ -86,9 +94,9 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "level-1-section-3.tmx",
         "level-1-section-1.tmx",
         "level-1-section-2.tmx",
+        "level-1-section-3.tmx",
         "level-1-section-4.tmx",
         "Lvl_1_Spring.tsx",
         "level-1-section-1.tsx",

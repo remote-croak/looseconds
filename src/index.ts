@@ -12,6 +12,7 @@ import {
   updatePlayerGravityForce,
 } from './Player';
 import { renderCollisions } from './Collision';
+import { renderTraps } from './Trap';
 import { drawUI } from './UI';
 import { Timer } from './Timer';
 import { showGameOver } from './gameover';
@@ -19,6 +20,7 @@ import { moveMap } from './MoveController';
 import { getSelectedMap, changeMap, mapController } from './MapController';
 import { drawTitle } from './Title';
 import { playBgMusic } from './Audio';
+import { trapPlayer } from './PlayerTrapsController';
 
 let isGameOver = false;
 
@@ -44,9 +46,11 @@ function animate(mapIndex: number) {
     drawMap(map);
     updatePlayerGravityForce(map.tiledExport);
     movePlayer(map.tiledExport);
+    trapPlayer(map.tiledExport);
     drawPlayer();
     drawUI();
     renderCollisions(false, map.tiledExport);
+    renderTraps(false, map.tiledExport);
     changeMap();
     if (playerWins()) {
       isGameOver = true;

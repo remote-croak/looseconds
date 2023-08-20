@@ -187,7 +187,10 @@ export function updatePlayerGravityForce(tiledExport: TiledExport) {
 }
 
 export function playerWins() {
-  if (getSelectedMap().offset.x >= 2000) {
+  if (
+    getSelectedMap().offset.x >=
+    getSelectedMap().image?.width! - getSelectedMap().finishLineOffset
+  ) {
     return !hasNextMap();
   }
   return false;

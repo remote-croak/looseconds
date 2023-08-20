@@ -1,17 +1,17 @@
 import { getContext } from '../Canvas';
 import { Map } from './interfaces';
-import mapImage from '../../static/assets/tiled/level-1-section-1.png';
-import mapImageSection2 from '../../static/assets/tiled/level-1-section-2.png';
-import mapImageSection3 from '../../static/assets/tiled/level-1-section-3.png';
-import mapImageSection4 from '../../static/assets/tiled/level-1-section-4.png';
-import mapTiledExport from '../../static/assets/tiled/level-1-section-1.json';
-import mapSection2TiledExport from '../../static/assets/tiled/level-1-section-2.json';
-import mapSection3TiledExport from '../../static/assets/tiled/level-1-section-3.json';
-import mapSection4TiledExport from '../../static/assets/tiled/level-1-section-4.json';
+import mapImage from '../../static/assets/tiled/level-1.png';
+// import mapImageSection2 from '../../static/assets/tiled/level-1-section-2.png';
+// import mapImageSection3 from '../../static/assets/tiled/level-1-section-3.png';
+// import mapImageSection4 from '../../static/assets/tiled/level-1-section-4.png';
+import mapTiledExport from '../../static/assets/tiled/level-1.json';
+// import mapSection2TiledExport from '../../static/assets/tiled/level-1-section-2.json';
+// import mapSection3TiledExport from '../../static/assets/tiled/level-1-section-3.json';
+// import mapSection4TiledExport from '../../static/assets/tiled/level-1-section-4.json';
 
 export const TILE_WIDTH = 40;
 export const TILE_HEIGHT = 40;
-export const MAP_SIZE_IN_TILES_X = 56;
+export const MAP_SIZE_IN_TILES_X = 256;
 export const MAP_SIZE_IN_TILES_Y = 18;
 
 // Canvas size:
@@ -26,37 +26,38 @@ export const map: Map = {
     x: 0,
     y: 0,
   },
+  finishLineOffset: 200,
 };
 
-export const mapSection2: Map = {
-  image: null,
-  src: mapImageSection2,
-  tiledExport: mapSection2TiledExport,
-  offset: {
-    x: 0,
-    y: 0,
-  },
-};
-
-export const mapSection3: Map = {
-  image: null,
-  src: mapImageSection3,
-  tiledExport: mapSection3TiledExport,
-  offset: {
-    x: 0,
-    y: 0,
-  },
-};
-
-export const mapSection4: Map = {
-  image: null,
-  src: mapImageSection4,
-  tiledExport: mapSection4TiledExport,
-  offset: {
-    x: 0,
-    y: 0,
-  },
-};
+// export const mapSection2: Map = {
+//   image: null,
+//   src: mapImageSection2,
+//   tiledExport: mapSection2TiledExport,
+//   offset: {
+//     x: 0,
+//     y: 0,
+//   },
+// };
+//
+// export const mapSection3: Map = {
+//   image: null,
+//   src: mapImageSection3,
+//   tiledExport: mapSection3TiledExport,
+//   offset: {
+//     x: 0,
+//     y: 0,
+//   },
+// };
+//
+// export const mapSection4: Map = {
+//   image: null,
+//   src: mapImageSection4,
+//   tiledExport: mapSection4TiledExport,
+//   offset: {
+//     x: 0,
+//     y: 0,
+//   },
+// };
 
 export async function initMap(map: Map) {
   const image = new Image();

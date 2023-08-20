@@ -69,7 +69,6 @@ async function main() {
   drawTitle();
   window.addEventListener('keydown', (event) => {
     if (event.code == 'Digit1') {
-      console.log('pressed 1');
       Timer.init();
       playBgMusic('dinosaurEra');
       animate(-1);

@@ -22,10 +22,31 @@ import { getSelectedMap, changeMap, mapController } from './MapController';
 import { drawTitle } from './Title';
 import { playBgMusic } from './Audio';
 import { trapPlayer } from './PlayerTrapsController';
+import { frameLimiter } from './FrameLimiter';
 
 let isGameOver = false;
 
 function animate(mapIndex: number) {
+  frameLimiter.delta = Date.now() - frameLimiter.then;
+
+  // cap the frame rate to 60 FPS
+  if (frameLimiter.delta < frameLimiter.interval) {
+    window.requestAnimationFrame(animate.bind(null, mapIndex));
+    return;
+  }
+
+  // Just `then = now` is not enough.
+  // Lets say we set fps at 10 which means
+  // each frame must take 100ms
+  // Now frame executes in 16ms (60fps) so
+  // the loop iterates 7 times (16*7 = 112ms) until
+  // delta > interval === true
+  // Eventually this lowers down the FPS as
+  // 112*10 = 1120ms (NOT 1000ms).
+  // So we have to get rid of that extra 12ms
+  // by subtracting delta (112) % interval (100).
+  frameLimiter.then = Date.now() - (frameLimiter.delta % frameLimiter.interval);
+
   if (!isGameOver) {
     if (mapIndex === mapController.selectedMap) {
       window.requestAnimationFrame(animate.bind(null, mapIndex));

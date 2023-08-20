@@ -1,6 +1,6 @@
 import { resetCanvas } from './Canvas';
 import { drawMap, initMap, map } from './Map';
-import { detectKeyboardActions } from './Keyboard';
+import { keyboard, detectKeyboardActions } from './Keyboard';
 import {
   drawPlayer,
   initPlayerImages,
@@ -16,6 +16,7 @@ import { Timer } from './Timer';
 import { showGameOver } from './gameover';
 import { moveMap } from './MoveController';
 import { getSelectedMap, changeMap, mapController } from './MapController';
+import { drawTitle } from './Title';
 
 let isGameOver = false;
 
@@ -60,8 +61,28 @@ async function main() {
   } catch (e) {
     console.error(e);
   }
-  Timer.init();
-  animate(-1);
+  drawTitle();
+  window.addEventListener('keydown', (event) => {
+    if (event.code == 'Digit1'){
+      console.log('pressed 1');
+      Timer.init();
+      animate(-1);
+    }
+    else if(event.code == 'Digit2'){
+      window.open('https://github.com/Acousticdesk/looseconds');
+    }
+    else{
+    
+    }
+  });
+  // if(keyboard.pressed.Digit1){
+  //   console.log('pressed 1');
+  //   Timer.init();
+  //   animate(-1);
+  // }
+  // else if(keyboard.pressed.Digit2){
+  //   window.open('https://github.com/Acousticdesk/looseconds');
+  // }
 }
 
 main();

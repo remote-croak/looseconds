@@ -17,7 +17,9 @@ export function showGameOver(playerWins: boolean): void {
     img.src = './assets/images/gameover_lose.png';
     playSFX('gameOverLost');
     window.addEventListener('keydown', (e) => {
-      window.location.reload();
+      if(e.code == 'Space') {
+        window.location.reload();
+      }
     });
   }
 }

@@ -8,5 +8,5 @@ export function drawTitle(){
         ctx.drawImage(img, 0 , 0)
     }
 
-    img.src = './assets/images/title_screen.jpg';
+    img.src = './assets/images/title_screen.png';
 }

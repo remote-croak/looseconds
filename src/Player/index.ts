@@ -1,17 +1,13 @@
-import { getContext, getCanvas } from '../Canvas';
-import { keyboard } from '../Keyboard';
-import { Player } from './interfaces';
-import { isPlayerColliding } from '../PlayerCollisionController';
 import dinaStand from '../../static/assets/images/Dina_stand.png';
+import dinaStandReverse from '../../static/assets/images/Dina_stand_reverse.png';
 import dinaJump from '../../static/assets/images/Dino_jump.png';
 import { playSFX } from '../Audio';
+import { getCanvas, getContext } from '../Canvas';
+import { keyboard } from '../Keyboard';
+import { getSelectedMap, hasNextMap } from '../MapController';
+import { isPlayerColliding } from '../PlayerCollisionController';
 import { TiledExport } from '../Tiled';
-import {
-  getSelectedMap,
-  hasNextMap,
-  mapController,
-  selectMap,
-} from '../MapController';
+import { Player } from './interfaces';
 
 export const PLAYER_VELOCITY_X_CAP = 5;
 export const PLAYER_VELOCITY_Y_CAP = 25;
@@ -30,8 +26,10 @@ export const player: Player = {
     x: PLAYER_VELOCITY_X_CAP,
     y: 0,
   },
+  direction: null,
   image: null,
   imageJump: null,
+  imageReverse: null,
   currentFrame: 0,
   frameBuffer: 4,
   elapsedFrames: 0,
@@ -42,6 +40,7 @@ export const player: Player = {
 export async function initPlayerImages() {
   const image = new Image();
   const imageJump = new Image();
+  const imageReverse = new Image();
 
   await new Promise((resolve, reject) => {
     image.onload = resolve;
@@ -55,14 +54,21 @@ export async function initPlayerImages() {
     imageJump.src = dinaJump;
   });
 
+  await new Promise((resolve, reject) => {
+    imageReverse.onload = resolve;
+    imageReverse.onerror = reject;
+    imageReverse.src = dinaStandReverse;
+  });
+
   player.image = image;
   player.imageJump = imageJump;
+  player.imageReverse = imageReverse;
 }
 
 export function drawPlayer() {
   const ctx = getContext();
 
-  if (!player.image || !player.imageJump) {
+  if (!player.image || !player.imageJump || !player.imageReverse) {
     throw new Error(
       'Oops, you forgot to initialize your player image before drawing the player'
     );
@@ -81,8 +87,11 @@ export function drawPlayer() {
     height: player.height,
   };
 
+  const playerImage =
+    player.direction === -1 ? player.imageReverse : player.image;
+
   ctx.drawImage(
-    player.jumps ? player.imageJump : player.image,
+    player.jumps ? player.imageJump : playerImage,
     cropBox.position.x,
     cropBox.position.y,
     cropBox.width,
@@ -108,6 +117,8 @@ export function movePlayer(tiledExport: TiledExport) {
 
   player.y += player.velocity.y;
   player.moving = false;
+  player.direction = -1;
+  console.log(keyboard.pressed.KeyA);
 
   // for some reason player is in the air
   // update the jumps state
@@ -119,6 +130,7 @@ export function movePlayer(tiledExport: TiledExport) {
       !isPlayerColliding({ ...player, x: player.x + 5 }, tiledExport)
     ) {
       player.moving = true;
+      player.direction = 1;
       // player.x += PLAYER_VELOCITY_X_CAP;
     }
   }
@@ -129,6 +141,7 @@ export function movePlayer(tiledExport: TiledExport) {
       !isPlayerColliding({ ...player, x: player.x - 5 }, tiledExport)
     ) {
       player.moving = true;
+      player.direction = -1;
       // player.x -= PLAYER_VELOCITY_X_CAP;
     }
   }

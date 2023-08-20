@@ -11,10 +11,10 @@ export function showGameOver(playerWins: boolean): void {
   };
   if (playerWins) {
     img.src = './assets/images/gameover_win.png';
-    playSFX('win')
+    playSFX('gameOverWin')
   } else {
     img.src = './assets/images/gameover_lose.png';
-    playSFX('lose')
+    playSFX('gameOverLost')
     window.addEventListener('keydown', (e) => {
       window.location.reload();
     });

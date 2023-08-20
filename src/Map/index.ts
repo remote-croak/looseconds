@@ -1,4 +1,4 @@
-import { getCanvas, getContext } from '../Canvas';
+import { getContext } from '../Canvas';
 import mapImage from '../../static/assets/tiled/level-1-section-1.png';
 
 export const TILE_WIDTH = 40;
@@ -12,10 +12,18 @@ export const MAP_SIZE_IN_TILES_Y = 18;
 
 interface Map {
   image: HTMLImageElement | null;
+  offset: {
+    x: number;
+    y: number;
+  };
 }
 
 export const map: Map = {
   image: null,
+  offset: {
+    x: 0,
+    y: 0,
+  },
 };
 
 export async function initMap() {
@@ -41,7 +49,7 @@ export function drawMap(map: Map) {
 
   const cropBox = {
     position: {
-      x: 0,
+      x: map.offset.x,
       y: 0,
     },
     width: 1280,

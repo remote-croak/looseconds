@@ -1,5 +1,6 @@
 import { Box } from '../Box';
 import {
+  map,
   MAP_SIZE_IN_TILES_X,
   MAP_SIZE_IN_TILES_Y,
   TILE_HEIGHT,
@@ -33,6 +34,7 @@ export function parseTiledCollisionFile(tiledCollisionData: number[]) {
   return result;
 }
 
+// the positions of the boxes should be updated based on the current map offset
 export function createCollisionBoxes(tiledExport: TiledExport) {
   const result = [];
   const collisions = parseTiledCollisionFile(
@@ -43,7 +45,7 @@ export function createCollisionBoxes(tiledExport: TiledExport) {
     for (let j = 0; j < collisions[i].length; j += 1) {
       if (collisions[i][j] === COLLISION_TILE_ID) {
         result.push({
-          x: j * TILE_WIDTH,
+          x: j * TILE_WIDTH - map.offset.x,
           y: i * TILE_HEIGHT,
           width: TILE_WIDTH,
           height: TILE_HEIGHT,

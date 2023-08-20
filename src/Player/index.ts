@@ -6,8 +6,8 @@ import dinaStand from '../../static/assets/images/Dina_stand.png';
 import dinaJump from '../../static/assets/images/Dino_jump.png';
 import { playSFX } from '../Audio';
 
-const PLAYER_VELOCITY_X_CAP = 5;
-const PLAYER_VELOCITY_Y_CAP = 25;
+export const PLAYER_VELOCITY_X_CAP = 5;
+export const PLAYER_VELOCITY_Y_CAP = 25;
 const JUMP_VELOCITY = 25;
 // actually it's the index 0 - 2 meaning there are 3 images
 const PLAYER_IMAGE_NUM_FRAMES = 2;
@@ -107,20 +107,17 @@ export function movePlayer() {
   if (keyboard.pressed.KeyD) {
     if (
       player.x + player.width < canvas.width &&
-      !isPlayerColliding({ ...player, x: player.x + PLAYER_VELOCITY_X_CAP })
+      !isPlayerColliding({ ...player, x: player.x + 1 })
     ) {
       player.moving = true;
-      player.x += PLAYER_VELOCITY_X_CAP;
+      // player.x += PLAYER_VELOCITY_X_CAP;
     }
   }
 
   if (keyboard.pressed.KeyA) {
-    if (
-      player.x > 0 &&
-      !isPlayerColliding({ ...player, x: player.x - PLAYER_VELOCITY_X_CAP })
-    ) {
+    if (player.x > 0 && !isPlayerColliding({ ...player, x: player.x - 1 })) {
       player.moving = true;
-      player.x -= PLAYER_VELOCITY_X_CAP;
+      // player.x -= PLAYER_VELOCITY_X_CAP;
     }
   }
 

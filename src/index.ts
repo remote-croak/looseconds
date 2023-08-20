@@ -43,7 +43,7 @@ function animate(mapIndex: number) {
     movePlayer(map.tiledExport);
     drawPlayer();
     drawUI();
-    renderCollisions(true, map.tiledExport);
+    renderCollisions(false, map.tiledExport);
     changeMap();
     if (Timer.getTimer() < 1) {
       isGameOver = true;

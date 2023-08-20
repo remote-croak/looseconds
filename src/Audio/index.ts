@@ -52,3 +52,27 @@ export function playSFX(clip: string): void {
   }
   audioSFX.play();
 }
+
+export function playBgMusic(clip: string): void {
+  let audioBg = new Audio();
+  switch (clip) {
+    case 'dinosaurEra': {
+      audioBg.src = './assets/audio/bg_music/bg_music_dinosaur_era.mp3';
+      break;
+    }
+    case 'medivalEra': {
+      audioBg.src = './assets/audio/bg_music/bg_music_medival_era.mp3';
+      break;
+    }
+    case 'currentEra': {
+      audioBg.src = './assets/audio/bg_music/bg_music_current_era.mp3';
+      break;
+    }
+
+    default: {
+      audioBg.src = '';
+      break;
+    }
+  }
+  audioBg.play();
+}

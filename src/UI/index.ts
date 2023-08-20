@@ -12,12 +12,12 @@ export function drawUI() {
   ctx.fillStyle = 'white';
 
   let timerValue = Timer.getTimer();
-  let timerText = 'Time: ' + timerValue;
-  ctx.fillText(timerText, w * 0.05, h * 0.15);
+  let timerText = '⏱️: ' + timerValue;
+  ctx.fillText(timerText, w * 0.05, h * 0.1);
 
   let collectibleCount = Collectible.getNumCollected();
-  let collectibleText = 'Items: ' + collectibleCount;
-  ctx.fillText(collectibleText, w * 0.05, h * 0.2);
+  let collectibleText = '💰: ' + collectibleCount;
+  ctx.fillText(collectibleText, w * 0.05, h * 0.15);
 }
 
 export function changeLevelSectionAnimation() {

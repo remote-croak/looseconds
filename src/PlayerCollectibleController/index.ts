@@ -3,6 +3,7 @@ import { Player } from '../Player/interfaces';
 import { collectible, createCollectibleBoxes } from '../Collectible';
 import { TiledExport } from '../Tiled';
 import { player } from '../Player';
+import { Timer } from '../Timer';
 
 export function isPlayerCollidingCollectible(
   player: Player,
@@ -32,5 +33,6 @@ export function pickCollectible(tiledExport: TiledExport) {
   if (isColliding) {
     collectible.collected[String(index)] = true;
     collectible.collectedAmount += 1;
+    Timer.increaseTime(3);
   }
 }

@@ -117,7 +117,6 @@ export function movePlayer(tiledExport: TiledExport) {
 
   player.y += player.velocity.y;
   player.moving = false;
-  player.direction = null;
   console.log(keyboard.pressed.KeyA);
 
   // for some reason player is in the air

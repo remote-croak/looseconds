@@ -1,16 +1,16 @@
 import { rectangularCollision } from '../Collision';
 import { Player } from '../Player/interfaces';
-import tiledExportLevel1 from '../../static/assets/tiled/level-1-section-1.json';
 import { createCollisionBoxes } from '../Collision';
+import { TiledExport } from '../Tiled';
 
-export function isPlayerColliding(player: Player,) {
-  const collisionBoxes = createCollisionBoxes(tiledExportLevel1)
-  
+export function isPlayerColliding(player: Player, tiledExport: TiledExport) {
+  const collisionBoxes = createCollisionBoxes(tiledExport);
+
   for (let c of collisionBoxes) {
     if (rectangularCollision(player, c)) {
-      return true
+      return true;
     }
   }
-  
-  return false
+
+  return false;
 }

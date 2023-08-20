@@ -1,6 +1,6 @@
 import { getCanvas, getContext } from '../Canvas';
 import { Timer } from '../Timer';
-import { Collectible } from '../Collectible';
+import { collectible } from '../Collectible';
 
 export function drawUI() {
   const canvas = getCanvas();

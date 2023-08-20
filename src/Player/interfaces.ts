@@ -9,9 +9,11 @@ export interface Player {
   };
   image: HTMLImageElement | null;
   imageJump: HTMLImageElement | null;
+  imageReverse: HTMLImageElement | null;
   currentFrame: number;
   frameBuffer: number;
   elapsedFrames: number;
   moving: boolean;
   jumps: boolean;
+  direction: number | null;
 }

@@ -1,5 +1,5 @@
+let audioSFX = new Audio();
 export function playSFX(clip: string): void {
-  let audioSFX = new Audio();
   switch (clip) {
     case 'jump': {
       audioSFX.src = './assets/audio/sfx/sfx_jump.mp3';
@@ -53,8 +53,12 @@ export function playSFX(clip: string): void {
   audioSFX.play();
 }
 
+export function stopSFX() {
+  audioSFX.pause();
+}
+
+let audioBg = new Audio();
 export function playBgMusic(clip: string): void {
-  let audioBg = new Audio();
   switch (clip) {
     case 'dinosaurEra': {
       audioBg.src = './assets/audio/bg_music/bg_music_dinosaur_era.mp3';
@@ -75,4 +79,8 @@ export function playBgMusic(clip: string): void {
     }
   }
   audioBg.play();
+}
+
+export function stopBGM() {
+  audioBg.pause();
 }

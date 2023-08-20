@@ -1,5 +1,5 @@
 import { getCanvas, getContext } from '../Canvas';
-import { playSFX } from '../Audio';
+import { playSFX, stopBGM } from '../Audio';
 
 export function showGameOver(playerWins: boolean): void {
   const canvas = getCanvas();
@@ -9,12 +9,13 @@ export function showGameOver(playerWins: boolean): void {
   img.onload = () => {
     ctx.drawImage(img, 0, 0);
   };
+  stopBGM();
   if (playerWins) {
     img.src = './assets/images/gameover_win.png';
-    playSFX('gameOverWin')
+    playSFX('gameOverWin');
   } else {
     img.src = './assets/images/gameover_lose.png';
-    playSFX('gameOverLost')
+    playSFX('gameOverLost');
     window.addEventListener('keydown', (e) => {
       window.location.reload();
     });

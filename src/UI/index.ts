@@ -1,5 +1,6 @@
 import { getCanvas, getContext } from '../Canvas';
 import { Timer } from '../Timer';
+import { Collectible } from '../Collectible';
 
 export function drawUI() {
   const canvas = getCanvas();
@@ -14,7 +15,8 @@ export function drawUI() {
   let timerText = 'Time: ' + timerValue;
   ctx.fillText(timerText, w * 0.05, h * 0.15);
 
-  let collectibleText = 'Items: 1';
+  let collectibleCount = Collectible.getNumCollected();
+  let collectibleText = 'Items: ' + collectibleCount;
   ctx.fillText(collectibleText, w * 0.05, h * 0.2);
 }
 

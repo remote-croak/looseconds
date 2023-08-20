@@ -18,6 +18,7 @@ import { showGameOver } from './gameover';
 import { moveMap } from './MoveController';
 import { getSelectedMap, changeMap, mapController } from './MapController';
 import { drawTitle } from './Title';
+import { playBgMusic } from './Audio';
 
 let isGameOver = false;
 
@@ -70,6 +71,7 @@ async function main() {
     if (event.code == 'Digit1') {
       console.log('pressed 1');
       Timer.init();
+      playBgMusic('dinosaurEra');
       animate(-1);
     } else if (event.code == 'Digit2') {
       window.open('https://github.com/Acousticdesk/looseconds');

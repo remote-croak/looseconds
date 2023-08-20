@@ -5,7 +5,7 @@
  </editorsettings>
  <tileset firstgid="1" source="ground-tileset.tsx"/>
  <imagelayer id="4" name="Image Layer 1">
-  <image source="Lvl_1_Spring.png" width="2241" height="721"/>
+  <image source="level-1-section-1.png" width="2241" height="721"/>
  </imagelayer>
  <layer id="2" name="Collision" width="56" height="18" opacity="0.44">
   <data encoding="csv">

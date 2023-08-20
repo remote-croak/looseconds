@@ -7,6 +7,7 @@
     "expandedProjectPaths": [
     ],
     "exportAsImage.useCurrentScale": true,
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "Lvl_1_Spring.tsx": {
             "dynamicWrapping": true,
@@ -23,27 +24,43 @@
             "scaleInDock": 1
         },
         "level-1-section-1.tmx": {
-            "scale": 0.4517,
+            "scale": 0.2807,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1665.9287137480628,
-                "y": 418.41930484835063
+                "x": 1205.9137869611684,
+                "y": 391.87744923405774
             }
         },
         "level-1-section-1.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 0.38
+        },
+        "level-1-section-2.tmx": {
+            "scale": 0.29984374999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1122.2511724856697,
+                "y": 360.18759770713905
+            }
+        },
+        "level-1-section-3.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1119.5,
+                "y": 360
+            }
         }
     },
     "last.exportedFilePath": "/Users/andriikicha/Dev/own/looseconds/static/assets/tiled",
     "last.imagePath": "/Users/andriikicha/Downloads",
-    "map.height": 40,
+    "map.height": 18,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
-    "map.tileHeight": 18,
-    "map.tileWidth": 56,
-    "map.width": 40,
+    "map.tileHeight": 40,
+    "map.tileWidth": 40,
+    "map.width": 56,
     "openFiles": [
     ],
     "project": "untitled.tiled-project",

@@ -1,5 +1,5 @@
-let audioSFX = new Audio();
 export function playSFX(clip: string): void {
+  var audioSFX = new Audio();
   switch (clip) {
     case 'jump': {
       audioSFX.src = './assets/audio/sfx/sfx_jump.mp3';
@@ -51,10 +51,6 @@ export function playSFX(clip: string): void {
     }
   }
   audioSFX.play();
-}
-
-export function stopSFX() {
-  audioSFX.pause();
 }
 
 let audioBg = new Audio();

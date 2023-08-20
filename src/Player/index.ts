@@ -129,6 +129,7 @@ export function movePlayer() {
       player.velocity.y === 0 &&
       Date.now() - keyboard.lastPressed.KeyW > 100 // 200 ms
     ) {
+      playSFX('jump');
       player.velocity.y = -JUMP_VELOCITY;
       // it's a hack
       // we need to update it again here to make if (isPlayerColliding(player)) work properly

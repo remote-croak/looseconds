@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "level-1-section-4.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "exportAsImage.useCurrentScale": true,
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -27,8 +28,8 @@
             "scale": 0.2807,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1205.9137869611684,
-                "y": 391.87744923405774
+                "x": 1123.9757748485927,
+                "y": 342.00213751335946
             }
         },
         "level-1-section-1.tsx": {
@@ -48,8 +49,16 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1119.5,
+                "x": 1120.5,
                 "y": 360
+            }
+        },
+        "level-1-section-4.tmx": {
+            "scale": 0.6681,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1088.9088459811405,
+                "y": 363.7180062864841
             }
         }
     },
@@ -62,13 +71,20 @@
     "map.tileWidth": 40,
     "map.width": 56,
     "openFiles": [
+        "level-1-section-1.tmx",
+        "level-1-section-2.tmx",
+        "level-1-section-3.tmx",
+        "level-1-section-4.tmx"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "level-1-section-1.tmx",
+        "level-1-section-2.tmx",
+        "level-1-section-3.tmx",
+        "level-1-section-4.tmx",
         "Lvl_1_Spring.tsx",
         "level-1-section-1.tsx",
-        "Lvl_1_p1.tsx",
-        "level-1-section-1.tmx"
+        "Lvl_1_p1.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

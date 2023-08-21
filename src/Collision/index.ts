@@ -1,16 +1,11 @@
 import { Box } from '../Box';
-import {
-  map,
-  MAP_SIZE_IN_TILES_X,
-  MAP_SIZE_IN_TILES_Y,
-  TILE_HEIGHT,
-  TILE_WIDTH,
-} from '../Map';
-import tiledExportLevel1 from '../../static/assets/tiled/level-1-section-1.json';
+import { TILE_HEIGHT, TILE_WIDTH } from '../Map';
 import { findLayer, TiledExport } from '../Tiled';
 import { getContext } from '../Canvas';
+import { getSelectedMap } from '../MapController';
+import { parseTiledBoxFile } from '../Box';
 
-const COLLISION_TILE_ID = 1009;
+const COLLISION_TILE_ID = 1;
 
 export function rectangularCollision(box1: Box, box2: Box) {
   return (
@@ -21,31 +16,16 @@ export function rectangularCollision(box1: Box, box2: Box) {
   );
 }
 
-export function parseTiledCollisionFile(tiledCollisionData: number[]) {
-  const result = [];
-  for (let i = 0; i < tiledCollisionData.length; i += MAP_SIZE_IN_TILES_X) {
-    result.push(tiledCollisionData.slice(i, i + MAP_SIZE_IN_TILES_X));
-  }
-  if (result.length !== MAP_SIZE_IN_TILES_Y) {
-    throw new Error(
-      'Oops, your collision data does not fit the size map. Please review the Tiled export.'
-    );
-  }
-  return result;
-}
-
 // the positions of the boxes should be updated based on the current map offset
 export function createCollisionBoxes(tiledExport: TiledExport) {
   const result = [];
-  const collisions = parseTiledCollisionFile(
-    findLayer('Collision', tiledExport)!
-  );
+  const collisions = parseTiledBoxFile(findLayer('Collision', tiledExport)!);
 
   for (let i = 0; i < collisions.length; i += 1) {
     for (let j = 0; j < collisions[i].length; j += 1) {
       if (collisions[i][j] === COLLISION_TILE_ID) {
         result.push({
-          x: j * TILE_WIDTH - map.offset.x,
+          x: j * TILE_WIDTH - getSelectedMap().offset.x,
           y: i * TILE_HEIGHT,
           width: TILE_WIDTH,
           height: TILE_HEIGHT,
@@ -56,14 +36,17 @@ export function createCollisionBoxes(tiledExport: TiledExport) {
   return result;
 }
 
-export function renderCollisions(shouldDraw: boolean) {
+export function renderCollisions(
+  shouldDraw: boolean,
+  tiledExport: TiledExport
+) {
   const ctx = getContext();
 
   if (!shouldDraw) {
     return;
   }
 
-  const collisionBoxes = createCollisionBoxes(tiledExportLevel1);
+  const collisionBoxes = createCollisionBoxes(tiledExport);
 
   for (let c of collisionBoxes) {
     ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';

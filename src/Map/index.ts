@@ -1,38 +1,88 @@
 import { getContext } from '../Canvas';
-import mapImage from '../../static/assets/tiled/level-1-section-1.png';
+import { Map } from './interfaces';
+import mapImage from '../../static/assets/tiled/level-1.png';
+import map2Image from '../../static/assets/tiled/level-2.png';
+// import mapImageSection2 from '../../static/assets/tiled/level-1-section-2.png';
+// import mapImageSection3 from '../../static/assets/tiled/level-1-section-3.png';
+// import mapImageSection4 from '../../static/assets/tiled/level-1-section-4.png';
+import mapTiledExport from '../../static/assets/tiled/level-1.json';
+import map2TiledExport from '../../static/assets/tiled/level-2.json';
+// import mapSection2TiledExport from '../../static/assets/tiled/level-1-section-2.json';
+// import mapSection3TiledExport from '../../static/assets/tiled/level-1-section-3.json';
+// import mapSection4TiledExport from '../../static/assets/tiled/level-1-section-4.json';
+import collectibleLevel1Image from '../../static/assets/images/collectible-level-1.png';
+import collectibleLevel2Image from '../../static/assets/images/collectible-level-2.png';
 
 export const TILE_WIDTH = 40;
 export const TILE_HEIGHT = 40;
-export const MAP_SIZE_IN_TILES_X = 56;
+export const MAP_SIZE_IN_TILES_X = 288;
 export const MAP_SIZE_IN_TILES_Y = 18;
 
 // Canvas size:
-// width = 40 * 32 = 1280
-// height = 60 * 12 = 720
-
-interface Map {
-  image: HTMLImageElement | null;
-  offset: {
-    x: number;
-    y: number;
-  };
-}
+// width = 40 * 56 = 2240
+// height = 40 * 18 = 720
 
 export const map: Map = {
   image: null,
+  src: mapImage,
+  tiledExport: mapTiledExport,
   offset: {
     x: 0,
     y: 0,
   },
+  finishLineOffset: 1280,
+  collectibleImage: collectibleLevel1Image,
 };
 
-export async function initMap() {
+export const map2: Map = {
+  image: null,
+  src: map2Image,
+  tiledExport: map2TiledExport,
+  offset: {
+    x: 0,
+    y: 0,
+  },
+  finishLineOffset: 1280,
+  collectibleImage: collectibleLevel2Image,
+};
+
+// export const mapSection2: Map = {
+//   image: null,
+//   src: mapImageSection2,
+//   tiledExport: mapSection2TiledExport,
+//   offset: {
+//     x: 0,
+//     y: 0,
+//   },
+// };
+//
+// export const mapSection3: Map = {
+//   image: null,
+//   src: mapImageSection3,
+//   tiledExport: mapSection3TiledExport,
+//   offset: {
+//     x: 0,
+//     y: 0,
+//   },
+// };
+//
+// export const mapSection4: Map = {
+//   image: null,
+//   src: mapImageSection4,
+//   tiledExport: mapSection4TiledExport,
+//   offset: {
+//     x: 0,
+//     y: 0,
+//   },
+// };
+
+export async function initMap(map: Map) {
   const image = new Image();
 
   await new Promise((resolve, reject) => {
     image.onload = resolve;
     image.onerror = reject;
-    image.src = mapImage;
+    image.src = map.src;
   });
 
   map.image = image;
